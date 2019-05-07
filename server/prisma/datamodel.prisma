@@ -1,0 +1,12 @@
+type Activity {
+    id: ID! @id
+    name: String!
+    color: String!
+    progress: [Int!]! @scalarList(strategy: RELATION)
+    target: [Int!]! @scalarList(strategy: RELATION)
+    start: [Int!]! @scalarList(strategy: RELATION)
+    end: [Int!]! @scalarList(strategy: RELATION)
+    repeat: [Int!]! @scalarList(strategy: RELATION)
+    adds: Boolean!
+    nextReset: Int!
+}

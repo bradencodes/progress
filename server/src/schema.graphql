@@ -1,0 +1,29 @@
+type Query {
+    info: String!
+    activities: [Activity!]
+}
+
+type Mutation {
+    addActivity(
+        name: String!
+        color: String!
+        progress: [Int!]!
+        target: [Int!]!
+        repeat: [Int!]!
+        adds: Boolean!
+        nextReset: Int!
+    ) : Activity!
+}
+
+type Activity {
+    id: ID!
+    name: String!
+    color: String!
+    progress: [Int!]!
+    target: [Int!]!
+    start: [Int!]!
+    end: [Int!]!
+    repeat: [Int!]!
+    adds: Boolean!
+    nextReset: Int!
+}
