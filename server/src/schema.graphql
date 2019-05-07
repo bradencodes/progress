@@ -14,6 +14,8 @@ type Mutation {
         nextReset: Int!
     ): Activity!
     deleteActivity(id: ID!): Activity
+    signup(email: String!, password: String!, username: String!): AuthPayload
+    login(email: String!, password: String!): AuthPayload
 }
 
 type Activity {
@@ -27,4 +29,17 @@ type Activity {
     repeat: [Int!]!
     adds: Boolean!
     nextReset: Int!
+    createdBy: User!
+}
+
+type User {
+    id: ID!
+    username: String!
+    email: String!
+    activities: [Activity!]!
+}
+
+type AuthPayload {
+    token: String
+    user: User
 }

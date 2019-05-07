@@ -181,7 +181,7 @@ export interface UserCreateInput {
   username: String;
   email: String;
   password: String;
-  activities?: Maybe<ActivityCreateManyWithoutUserInput>;
+  activities?: Maybe<ActivityCreateManyWithoutCreatedByInput>;
 }
 
 export interface ActivityCreateendInput {
@@ -310,28 +310,28 @@ export interface ActivityUpdateInput {
   repeat?: Maybe<ActivityUpdaterepeatInput>;
   adds?: Maybe<Boolean>;
   nextReset?: Maybe<Int>;
-  user?: Maybe<UserUpdateOneRequiredWithoutActivitiesInput>;
+  createdBy?: Maybe<UserUpdateOneRequiredWithoutActivitiesInput>;
 }
 
 export type UserWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export interface ActivityUpdateManyWithoutUserInput {
+export interface ActivityUpdateManyWithoutCreatedByInput {
   create?: Maybe<
-    ActivityCreateWithoutUserInput[] | ActivityCreateWithoutUserInput
+    ActivityCreateWithoutCreatedByInput[] | ActivityCreateWithoutCreatedByInput
   >;
   delete?: Maybe<ActivityWhereUniqueInput[] | ActivityWhereUniqueInput>;
   connect?: Maybe<ActivityWhereUniqueInput[] | ActivityWhereUniqueInput>;
   set?: Maybe<ActivityWhereUniqueInput[] | ActivityWhereUniqueInput>;
   disconnect?: Maybe<ActivityWhereUniqueInput[] | ActivityWhereUniqueInput>;
   update?: Maybe<
-    | ActivityUpdateWithWhereUniqueWithoutUserInput[]
-    | ActivityUpdateWithWhereUniqueWithoutUserInput
+    | ActivityUpdateWithWhereUniqueWithoutCreatedByInput[]
+    | ActivityUpdateWithWhereUniqueWithoutCreatedByInput
   >;
   upsert?: Maybe<
-    | ActivityUpsertWithWhereUniqueWithoutUserInput[]
-    | ActivityUpsertWithWhereUniqueWithoutUserInput
+    | ActivityUpsertWithWhereUniqueWithoutCreatedByInput[]
+    | ActivityUpsertWithWhereUniqueWithoutCreatedByInput
   >;
   deleteMany?: Maybe<ActivityScalarWhereInput[] | ActivityScalarWhereInput>;
   updateMany?: Maybe<
@@ -340,19 +340,19 @@ export interface ActivityUpdateManyWithoutUserInput {
   >;
 }
 
-export interface ActivityUpsertWithWhereUniqueWithoutUserInput {
+export interface ActivityUpsertWithWhereUniqueWithoutCreatedByInput {
   where: ActivityWhereUniqueInput;
-  update: ActivityUpdateWithoutUserDataInput;
-  create: ActivityCreateWithoutUserInput;
+  update: ActivityUpdateWithoutCreatedByDataInput;
+  create: ActivityCreateWithoutCreatedByInput;
 }
 
 export interface ActivityUpdatetargetInput {
   set?: Maybe<Int[] | Int>;
 }
 
-export interface ActivityUpdateWithWhereUniqueWithoutUserInput {
+export interface ActivityUpdateWithWhereUniqueWithoutCreatedByInput {
   where: ActivityWhereUniqueInput;
-  data: ActivityUpdateWithoutUserDataInput;
+  data: ActivityUpdateWithoutCreatedByDataInput;
 }
 
 export interface ActivityUpdatestartInput {
@@ -370,14 +370,14 @@ export interface ActivityCreateInput {
   repeat?: Maybe<ActivityCreaterepeatInput>;
   adds: Boolean;
   nextReset: Int;
-  user: UserCreateOneWithoutActivitiesInput;
+  createdBy: UserCreateOneWithoutActivitiesInput;
 }
 
 export interface UserUpdateInput {
   username?: Maybe<String>;
   email?: Maybe<String>;
   password?: Maybe<String>;
-  activities?: Maybe<ActivityUpdateManyWithoutUserInput>;
+  activities?: Maybe<ActivityUpdateManyWithoutCreatedByInput>;
 }
 
 export interface ActivityCreatetargetInput {
@@ -417,7 +417,7 @@ export interface UserUpdateWithoutActivitiesDataInput {
   password?: Maybe<String>;
 }
 
-export interface ActivityUpdateWithoutUserDataInput {
+export interface ActivityUpdateWithoutCreatedByDataInput {
   name?: Maybe<String>;
   color?: Maybe<String>;
   progress?: Maybe<ActivityUpdateprogressInput>;
@@ -433,14 +433,14 @@ export interface ActivityCreateprogressInput {
   set?: Maybe<Int[] | Int>;
 }
 
-export interface ActivityCreateManyWithoutUserInput {
+export interface ActivityCreateManyWithoutCreatedByInput {
   create?: Maybe<
-    ActivityCreateWithoutUserInput[] | ActivityCreateWithoutUserInput
+    ActivityCreateWithoutCreatedByInput[] | ActivityCreateWithoutCreatedByInput
   >;
   connect?: Maybe<ActivityWhereUniqueInput[] | ActivityWhereUniqueInput>;
 }
 
-export interface ActivityCreateWithoutUserInput {
+export interface ActivityCreateWithoutCreatedByInput {
   id?: Maybe<ID_Input>;
   name: String;
   color: String;
@@ -523,7 +523,7 @@ export interface ActivityWhereInput {
   nextReset_lte?: Maybe<Int>;
   nextReset_gt?: Maybe<Int>;
   nextReset_gte?: Maybe<Int>;
-  user?: Maybe<UserWhereInput>;
+  createdBy?: Maybe<UserWhereInput>;
   AND?: Maybe<ActivityWhereInput[] | ActivityWhereInput>;
   OR?: Maybe<ActivityWhereInput[] | ActivityWhereInput>;
   NOT?: Maybe<ActivityWhereInput[] | ActivityWhereInput>;
@@ -774,7 +774,7 @@ export interface ActivityPromise extends Promise<Activity>, Fragmentable {
   repeat: () => Promise<Int[]>;
   adds: () => Promise<Boolean>;
   nextReset: () => Promise<Int>;
-  user: <T = UserPromise>() => T;
+  createdBy: <T = UserPromise>() => T;
 }
 
 export interface ActivitySubscription
@@ -790,7 +790,7 @@ export interface ActivitySubscription
   repeat: () => Promise<AsyncIterator<Int[]>>;
   adds: () => Promise<AsyncIterator<Boolean>>;
   nextReset: () => Promise<AsyncIterator<Int>>;
-  user: <T = UserSubscription>() => T;
+  createdBy: <T = UserSubscription>() => T;
 }
 
 export interface ActivityNullablePromise
@@ -806,7 +806,7 @@ export interface ActivityNullablePromise
   repeat: () => Promise<Int[]>;
   adds: () => Promise<Boolean>;
   nextReset: () => Promise<Int>;
-  user: <T = UserPromise>() => T;
+  createdBy: <T = UserPromise>() => T;
 }
 
 export interface ActivityConnection {

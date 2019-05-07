@@ -14,7 +14,7 @@ module.exports = {
   repeat: [Int!]!
   adds: Boolean!
   nextReset: Int!
-  user: User!
+  createdBy: User!
 }
 
 type ActivityConnection {
@@ -38,11 +38,11 @@ input ActivityCreateInput {
   repeat: ActivityCreaterepeatInput
   adds: Boolean!
   nextReset: Int!
-  user: UserCreateOneWithoutActivitiesInput!
+  createdBy: UserCreateOneWithoutActivitiesInput!
 }
 
-input ActivityCreateManyWithoutUserInput {
-  create: [ActivityCreateWithoutUserInput!]
+input ActivityCreateManyWithoutCreatedByInput {
+  create: [ActivityCreateWithoutCreatedByInput!]
   connect: [ActivityWhereUniqueInput!]
 }
 
@@ -62,7 +62,7 @@ input ActivityCreatetargetInput {
   set: [Int!]
 }
 
-input ActivityCreateWithoutUserInput {
+input ActivityCreateWithoutCreatedByInput {
   id: ID
   name: String!
   color: String!
@@ -196,7 +196,7 @@ input ActivityUpdateInput {
   repeat: ActivityUpdaterepeatInput
   adds: Boolean
   nextReset: Int
-  user: UserUpdateOneRequiredWithoutActivitiesInput
+  createdBy: UserUpdateOneRequiredWithoutActivitiesInput
 }
 
 input ActivityUpdateManyDataInput {
@@ -223,14 +223,14 @@ input ActivityUpdateManyMutationInput {
   nextReset: Int
 }
 
-input ActivityUpdateManyWithoutUserInput {
-  create: [ActivityCreateWithoutUserInput!]
+input ActivityUpdateManyWithoutCreatedByInput {
+  create: [ActivityCreateWithoutCreatedByInput!]
   delete: [ActivityWhereUniqueInput!]
   connect: [ActivityWhereUniqueInput!]
   set: [ActivityWhereUniqueInput!]
   disconnect: [ActivityWhereUniqueInput!]
-  update: [ActivityUpdateWithWhereUniqueWithoutUserInput!]
-  upsert: [ActivityUpsertWithWhereUniqueWithoutUserInput!]
+  update: [ActivityUpdateWithWhereUniqueWithoutCreatedByInput!]
+  upsert: [ActivityUpsertWithWhereUniqueWithoutCreatedByInput!]
   deleteMany: [ActivityScalarWhereInput!]
   updateMany: [ActivityUpdateManyWithWhereNestedInput!]
 }
@@ -256,7 +256,7 @@ input ActivityUpdatetargetInput {
   set: [Int!]
 }
 
-input ActivityUpdateWithoutUserDataInput {
+input ActivityUpdateWithoutCreatedByDataInput {
   name: String
   color: String
   progress: ActivityUpdateprogressInput
@@ -268,15 +268,15 @@ input ActivityUpdateWithoutUserDataInput {
   nextReset: Int
 }
 
-input ActivityUpdateWithWhereUniqueWithoutUserInput {
+input ActivityUpdateWithWhereUniqueWithoutCreatedByInput {
   where: ActivityWhereUniqueInput!
-  data: ActivityUpdateWithoutUserDataInput!
+  data: ActivityUpdateWithoutCreatedByDataInput!
 }
 
-input ActivityUpsertWithWhereUniqueWithoutUserInput {
+input ActivityUpsertWithWhereUniqueWithoutCreatedByInput {
   where: ActivityWhereUniqueInput!
-  update: ActivityUpdateWithoutUserDataInput!
-  create: ActivityCreateWithoutUserInput!
+  update: ActivityUpdateWithoutCreatedByDataInput!
+  create: ActivityCreateWithoutCreatedByInput!
 }
 
 input ActivityWhereInput {
@@ -332,7 +332,7 @@ input ActivityWhereInput {
   nextReset_lte: Int
   nextReset_gt: Int
   nextReset_gte: Int
-  user: UserWhereInput
+  createdBy: UserWhereInput
   AND: [ActivityWhereInput!]
   OR: [ActivityWhereInput!]
   NOT: [ActivityWhereInput!]
@@ -422,7 +422,7 @@ input UserCreateInput {
   username: String!
   email: String!
   password: String!
-  activities: ActivityCreateManyWithoutUserInput
+  activities: ActivityCreateManyWithoutCreatedByInput
 }
 
 input UserCreateOneWithoutActivitiesInput {
@@ -482,7 +482,7 @@ input UserUpdateInput {
   username: String
   email: String
   password: String
-  activities: ActivityUpdateManyWithoutUserInput
+  activities: ActivityUpdateManyWithoutCreatedByInput
 }
 
 input UserUpdateManyMutationInput {

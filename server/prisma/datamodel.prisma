@@ -9,7 +9,7 @@ type Activity {
     repeat: [Int!]! @scalarList(strategy: RELATION)
     adds: Boolean!
     nextReset: Int!
-    user: User!
+    createdBy: User!
 }
 
 type User {
