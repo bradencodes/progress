@@ -1,5 +1,6 @@
 # The HTTP endpoint for your Prisma API
-#endpoint: ''endpoint: https://us1.prisma.sh/braden-walker-7040bb/progressDB/dev
+#endpoint: ''
+endpoint: https://us1.prisma.sh/braden-walker-7040bb/progressDB/dev
 
 
 
@@ -10,3 +11,7 @@ datamodel: datamodel.prisma
 generate:
   - generator: javascript-client
     output: ../src/generated/prisma-client
+
+hooks:
+  post-deploy:
+    - prisma generate

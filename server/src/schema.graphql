@@ -4,7 +4,7 @@ type Query {
 }
 
 type Mutation {
-    addActivity(
+    createActivity(
         name: String!
         color: String!
         progress: [Int!]!
@@ -12,7 +12,8 @@ type Mutation {
         repeat: [Int!]!
         adds: Boolean!
         nextReset: Int!
-    ) : Activity!
+    ): Activity!
+    deleteActivity(id: ID!): Activity
 }
 
 type Activity {

@@ -7,7 +7,7 @@ const resolvers = {
         activities: (root, args, context, info) => context.prisma.activities(),
     },
     Mutation: {
-        addActivity: (root, args, context) => {
+        createActivity: (root, args, context) => {
             return context.prisma.createActivity({
                 name: args.name,
                 color: args.color,
@@ -19,6 +19,9 @@ const resolvers = {
                 adds: args.adds,
                 nextReset: args.nextReset
             })
+        },
+        deleteActivity: (root, args, context) => {
+            return context.prisma.deleteActivity({id: args.id});
         }
     }
 }

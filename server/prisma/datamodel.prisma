@@ -9,4 +9,13 @@ type Activity {
     repeat: [Int!]! @scalarList(strategy: RELATION)
     adds: Boolean!
     nextReset: Int!
+    user: User!
+}
+
+type User {
+    id: ID! @id
+    username: String!
+    email: String!
+    password: String!
+    activities: [Activity!]!
 }
