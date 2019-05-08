@@ -1,7 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-require('dotenv').config()
+const passport = require('passport');
+require('dotenv').config();
+
+const users = require('./routes/api/users.js');
 
 const app = express();
 
@@ -20,6 +23,15 @@ const db = `mongodb://${process.env.MLAB_USER}:${process.env.MLAB_PASSWORD}@ds04
 mongoose.connect(db, { useNewUrlParser: true })
     .then(() => console.log("MongoDB successfully connected"))
     .catch(err => console.log(err));
+
+// Passport Middleware
+app.use(passport.initialize());
+
+// Passport Config
+require('./config/passport.js')(passport);
+
+// Routes
+app.use('/api/users', users);
 
 const port = process.env.PORT || 5000;
 
