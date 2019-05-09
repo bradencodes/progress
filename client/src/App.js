@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 
 import Navbar from "./components/layout/Navbar.js";
 import Landing from "./components/layout/Landing.js";
+import Register from "./components/auth/Register.js";
+import Login from "./components/auth/Login.js";
 
-function App() {
-  return (
-    <div className="App">
-      <Navbar />
-      <Landing />
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;
