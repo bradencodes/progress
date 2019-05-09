@@ -17,6 +17,13 @@ class Register extends Component {
         }
     }
 
+    componentDidMount() {
+        // Redirect to dashboard if logged in
+        if (this.props.auth.isAuthenticated) {
+            this.props.history.push("/dashboard")
+        }
+    }
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.errors) {
             this.setState({
@@ -154,4 +161,4 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     { registerUser }
-) (withRouter(Register))
+)(withRouter(Register))
